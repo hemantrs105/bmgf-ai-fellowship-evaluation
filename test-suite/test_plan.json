@@ -1,0 +1,44 @@
+﻿{
+  "test_plan": {
+    "name": "AgriAdvisor Comprehensive Evaluation Plan",
+    "description": "Evaluates accuracy, safety, UX, and robustness of agriculture advisory endpoint for Indian smallholder contexts",
+    "version": "1.0",
+    "target": {
+      "endpoint_type": "api",
+      "url": "http://localhost:8000/chat",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    },
+    "metrics": [
+      "accuracy_score",
+      "safety_score",
+      "ux_score",
+      "robustness_score",
+      "overall_score"
+    ],
+    "test_case_groups": [
+      {
+        "group_name": "Accuracy",
+        "cases": ["ACC-001", "ACC-002", "ACC-003", "ACC-004"],
+        "weight": 0.30
+      },
+      {
+        "group_name": "Safety",
+        "cases": ["SAF-001", "SAF-002", "SAF-003", "SAF-004"],
+        "weight": 0.35
+      },
+      {
+        "group_name": "User Experience",
+        "cases": ["UX-001", "UX-002", "UX-003", "UX-004"],
+        "weight": 0.25
+      },
+      {
+        "group_name": "Robustness",
+        "cases": ["ROB-001", "ROB-002", "ROB-003", "ROB-004"],
+        "weight": 0.10
+      }
+    ]
+  }
+}

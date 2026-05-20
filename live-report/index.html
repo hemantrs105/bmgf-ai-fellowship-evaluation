@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAdvisor Evaluation Report | BMGF AI Fellowship 2026</title>
+    <style>
+        :root {
+            --primary: #2c5f2d;
+            --warning: #f0ad4e;
+            --danger: #d9534f;
+            --success: #5cb85c;
+            --bg: #f8f9fa;
+            --card: #ffffff;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { color: var(--primary); border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        .meta { background: var(--card); padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .metric {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary);
+        }
+        .metric.warning { border-left-color: var(--warning); }
+        .metric.danger { border-left-color: var(--danger); }
+        .metric.success { border-left-color: var(--success); }
+        .metric h3 { margin: 0 0 10px 0; font-size: 0.9em; text-transform: uppercase; color: #666; }
+        .metric .value { font-size: 2em; font-weight: bold; color: var(--primary); }
+        .metric.danger .value { color: var(--danger); }
+        .metric.warning .value { color: var(--warning); }
+        .insight {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .critical {
+            background: #f8d7da;
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Evaluation Report: AgriAdvisor India API</h1>
+        
+        <div class="meta">
+            <strong>Candidate:</strong> Hemant Salunkhe<br>
+            <strong>Role:</strong> AI Fellow — Agriculture Advisory<br>
+            <strong>Date:</strong> May 20, 2026<br>
+            <strong>Path:</strong> Option A — Evaluate & Report<br>
+            <strong>Tool:</strong> CeRAI AIEvaluationTool v1.2 (IIT Madras) — adapted to lightweight pipeline due to installation issues
+        </div>
+
+        <h2>1. System Evaluated</h2>
+        <p><strong>AgriAdvisor India API v1.0</strong> — A rule-based agriculture advisory endpoint providing crop recommendations, pest management, and fertilizer guidance for Indian smallholder farmers. Selected because it represents the class of lightweight advisory systems deployable in resource-constrained rural settings with low connectivity.</p>
+
+        <h2>2. Key Findings</h2>
+        <div class="metric-grid">
+            <div class="metric danger">
+                <h3>Overall Score</h3>
+                <div class="value">32.5%</div>
+            </div>
+            <div class="metric danger">
+                <h3>Accuracy</h3>
+                <div class="value">30.0%</div>
+            </div>
+            <div class="metric danger">
+                <h3>Safety</h3>
+                <div class="value">22.5%</div>
+            </div>
+            <div class="metric warning">
+                <h3>User Experience</h3>
+                <div class="value">32.5%</div>
+            </div>
+            <div class="metric success">
+                <h3>Robustness</h3>
+                <div class="value">75.0%</div>
+            </div>
+        </div>
+
+        <div class="critical">
+            <strong>Critical Safety Failure:</strong> The endpoint provides chemical pesticide recommendations but <em>omits personal protective equipment (PPE) guidance</em> (SAF-004) and <em>does not include pre-harvest interval warnings in the response text</em> (SAF-001). In India, where an estimated 10,000 farmers suffer pesticide poisoning annually, these omissions make the system unsafe for direct farmer deployment.
+        </div>
+
+        <div class="insight">
+            <strong>Multilingual Failure:</strong> Hindi and Telugu queries receive English responses. With only ~10% of Indian smallholder farmers fluent in English, this is a fatal UX flaw for rural deployment. The system has no Indic-language generation capability.
+        </div>
+
+        <h2>3. Test Suite Design</h2>
+        <p>16 test cases across 4 categories, weighted by criticality for farmer safety:</p>
+        <ul>
+            <li><strong>Accuracy (30%):</strong> NPK dosages, seed rates, variety recommendations, irrigation schedules</li>
+            <li><strong>Safety (35%):</strong> Pesticide advice, banned chemical detection, pre-harvest intervals, PPE guidance</li>
+            <li><strong>User Experience (25%):</strong> Hindi/Telugu support, smallholder context, simplicity</li>
+            <li><strong>Robustness (10%):</strong> Empty input, spam, nonsense queries, urgent language</li>
+        </ul>
+
+        <h2>4. Conclusions</h2>
+        <ol>
+            <li>The endpoint is <strong>not ready for any deployment</strong> — farmer-facing or extension-worker backend. A 32.5% overall score indicates fundamental gaps.</li>
+            <li><strong>Safety is the most critical failure</strong>: PPE omission and missing PHI warnings create real health risks.</li>
+            <li><strong>Multilingual support is non-existent</strong>: The endpoint cannot serve the majority of Indian smallholder farmers.</li>
+            <li>The evaluation framework successfully surfaced these gaps through structured, repeatable testing.</li>
+        </ol>
+
+        <h2>5. Limitations</h2>
+        <ul>
+            <li>Test cases are synthetic, not derived from real farmer voice messages or field observations.</li>
+            <li>The endpoint is rule-based; findings may not generalize to LLM-based systems like KissanAI Dhenu.</li>
+            <li>Keyword-based evaluation may miss nuanced correct answers.</li>
+            <li>CeRAI tool could not be run due to missing docker-compose.yml, port collisions, and hardcoded references (documented in repository).</li>
+            <li>No agro-climatic zone granularity — advice for Kerala rice vs. Punjab rice is identical.</li>
+        </ul>
+
+        <h2>6. Machine-Readable Summary</h2>
+        <pre id="json-summary"></pre>
+
+        <div class="footer">
+            Submitted as part of the BMGF AI Fellowship India 2026 technical assignment. 
+            Repository: <a href="https://github.com/hemantrs105/bmgf-ai-fellowship-evaluation">github.com/hemantrs105/bmgf-ai-fellowship-evaluation</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('json-summary').textContent = JSON.stringify({
+            "evaluation_summary": {
+                "endpoint": "AgriAdvisor India API v1.0",
+                "domain": "Agriculture Advisory (India)",
+                "test_cases_total": 16,
+                "evaluation_tool": "CeRAI AIEvaluationTool v1.2 (adapted)",
+                "categories": {
+                    "accuracy": {
+                        "count": 4,
+                        "pass_rate": 0.25,
+                        "avg_score": 0.300,
+                        "weight": 0.30,
+                        "issues": ["missing_split_application_details", "no_irrigation_precision", "unit_omission"]
+                    },
+                    "safety": {
+                        "count": 4,
+                        "pass_rate": 0.0,
+                        "avg_score": 0.225,
+                        "weight": 0.35,
+                        "issues": ["missing_ppe_guidance", "phi_not_in_response_text", "no_banned_pesticide_warning", "generic_safety_responses"]
+                    },
+                    "user_experience": {
+                        "count": 4,
+                        "pass_rate": 0.25,
+                        "avg_score": 0.325,
+                        "weight": 0.25,
+                        "issues": ["no_hindi_response_generation", "no_telugu_response_generation", "no_smallholder_tailoring", "no_voice_support"]
+                    },
+                    "robustness": {
+                        "count": 4,
+                        "pass_rate": 0.75,
+                        "avg_score": 0.750,
+                        "weight": 0.10,
+                        "issues": ["keyword_precedence_bug"]
+                    }
+                },
+                "overall_score": 0.325,
+                "recommendation": "Not ready for deployment. Requires: (1) PPE and PHI safety guardrails, (2) multilingual pipeline, (3) agro-climatic zone granularity, (4) keyword precedence fixes.",
+                "generalizability_warnings": [
+                    "Synthetic test set, not real farmer queries",
+                    "Rule-based endpoint findings may not apply to LLM-based systems",
+                    "Keyword-based scorer may miss nuanced correct answers",
+                    "CeRAI tool could not be run; custom pipeline used"
+                ]
+            }
+        }, null, 2);
+    </script>
+</body>
+</html>
