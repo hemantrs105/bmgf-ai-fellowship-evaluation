@@ -1,4 +1,4 @@
-﻿# BMGF AI Fellowship — Technical Assignment
+﻿# Gates Foundation (AI Fellowship) - Technical Assignment
 
 ## Path Chosen
 **Option A: Evaluate & Report**
@@ -18,22 +18,30 @@ Selected because it allows demonstration of domain expertise in agriculture advi
 
 ### 2. Run the Agriculture Endpoint
 Run in powershell
-`cd agri-endpoint
+```
+cd agri-endpoint
 docker build -t agri-endpoint .
-docker run -d --name agri-api -p 8000:8000 agri-endpoint`
+docker run -d --name agri-api -p 8000:8000 agri-endpoint
+```
 
 Or run natively:
-`cd agri-endpoint
+```
+cd agri-endpoint
 pip install -r requirements.txt
-python -m uvicorn main:app --host 0.0.0.0 --port 8000`
+python -m uvicorn main:app --host 0.0.0.0 --port 8000
+```
 
 Test:
-`Invoke-RestMethod -Uri http://localhost:8000/chat -Method POST -ContentType "application/json" -Body '{"message":"How do I grow rice?"}'`
+```
+Invoke-RestMethod -Uri http://localhost:8000/chat -Method POST -ContentType "application/json" -Body '{"message":"How do I grow rice?"}'
+```
 
 ### 3. Run Evaluation
-`cd test-suite
+```
+cd test-suite
 pip install requests
-python evaluate.py`
+python evaluate.py
+```
 Results will be saved to ../results/raw_results.json.
 
 ### 4. View Report
@@ -63,13 +71,14 @@ Course correction: I initially attempted to evaluate a third-party public API (K
 Intellectual ownership: All test case design, metric weighting decisions, safety judgments (e.g., what constitutes "unsafe" pesticide advice), and interpretive conclusions are my own. AI did not make evaluative judgments about farmer safety or multilingual requirements. those required domain reasoning specific to Indian smallholder agriculture.
 
 ## Repository Structure
-`
+```
 ├── README.md
 ├── cerai-tool/          # CeRAI v1.2 with configs + CERAI_ISSUES.md
 ├── agri-endpoint/       # FastAPI agriculture advisory API
 ├── test-suite/          # 16 test cases + test plan + evaluate.py
 ├── results/             # Raw results + analysis
-└── live-report/         # Self-contained HTML report`
+└── live-report/         # Self-contained HTML report
+```
 
 ## Live Report
 https://hemantrs105.github.io/bmgf-ai-fellowship-evaluation/
