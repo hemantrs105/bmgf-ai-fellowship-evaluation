@@ -2,8 +2,10 @@
 
 ## Path Chosen
 **Option A: Evaluate & Report**
-
-Selected because it allows demonstration of domain expertise in agriculture advisory systems within the 2-day constraint, and directly aligns with the AI Fellow — Agriculture Advisory role. Building an alternative framework (Option B) would not leave sufficient time for rigorous test design and analysis.
+I selected Option A because it allowed me to better demonstrate my domain expertise in agriculture advisory systems within the stipulated 2-day window. 
+Within this timeframe, rather than rebuilding the underlying tool for evaluating the endpoint, I wanted to apply my academic & technical background in structured data modeling to extract meaningful evaluation metrics. 
+It allowed me to evaluate the endpoint as a domain expert and demonstrate how an existing evaluation framework can be integrated into a reproducible evaluation pipeline, which I feel relates well with my experience and the objectives & deliverables of the technical assessment. 
+Building an alternative framework (Option B) would not leave sufficient time for rigorous test design and analysis.
 
 ## System Evaluated
 **AgriAdvisor India API v1.0** — A rule-based agriculture advisory endpoint for Indian smallholder farmers.
@@ -63,12 +65,12 @@ Rather than spending the remaining time modifying the tool's source code, I crea
 This approach ensures the evaluation is reproducible and the findings are rigorous.
 
 ## AI Use Disclosure
-I used AI assistants as a research, scaffolding, and drafting tool, not as a replacement for technical or domain judgment.
+I used AI assistants as a research, scaffolding, and course correction tool, not as a replacement for technical or domain judgment.
 Research: AI helped to quickly parse the CeRAI tool documentation and Docker setup requirements, saving time on repository exploration.
 Code scaffolding: AI generated boilerplate for the FastAPI endpoint, Dockerfile, and HTML report template. 
 I further modified these to fit the Indian agriculture domain (e.g., adding questions related to ICAR-recommended varieties, banned pesticide lists,  resistance in BT cotton, Indic language test cases).
-Course correction: I initially attempted to evaluate a third-party public API (KissanAI), but stable API access and documentation were unavailable within the time limit. I pivoted to building a controlled mock endpoint that still demonstrates realistic agriculture advisory scenarios and safety-critical test cases. This pivot was necessary to ensure reproducibility and full test coverage.
-Intellectual ownership: All test case design, metric weighting decisions, safety judgments (e.g., what constitutes "unsafe" pesticide advice), and interpretive conclusions are my own. AI did not make evaluative judgments about farmer safety or multilingual requirements. those required domain reasoning specific to Indian smallholder agriculture.
+Course correction: I initially attempted to evaluate a third-party public API (KissanAI), but stable API access and documentation were unavailable within the time limit. To respect the 48-hour window and as assignment gave me freedom to use the endpoint of my choice, I pivoted to building a controlled mock endpoint that demonstrates realistic agriculture advisory scenarios and safety-critical test cases. This pivot was necessary to ensure reproducibility, full test coverage and a live endpoint during evaluation. The mock endpoint is explicitly documented as such in the report, and its limitations are honestly accounted.
+Intellectual ownership: Every snippet of code in this repository was reviewed, modified, or written by me after AI-generated scaffolding. All test case design, metric weighting decisions, safety judgments (e.g., what constitutes "unsafe" pesticide advice), and interpretive conclusions are my own. AI did not make evaluative judgments about farmer safety or multilingual requirements. those required domain reasoning specific to Indian smallholder agriculture.
 
 ## Repository Structure
 ```
