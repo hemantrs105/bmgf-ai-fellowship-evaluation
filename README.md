@@ -2,6 +2,7 @@
 
 ## Path Chosen
 **Option A: Evaluate & Report**
+
 I selected Option A because it allowed me to better demonstrate my domain expertise in agriculture advisory systems within the stipulated 2-day window. 
 Within this timeframe, rather than rebuilding the underlying tool for evaluating the endpoint, I wanted to apply my academic & technical background in structured data modeling to extract meaningful evaluation metrics. 
 It allowed me to evaluate the endpoint as a domain expert and demonstrate how an existing evaluation framework can be integrated into a reproducible evaluation pipeline, which I feel relates well with my experience and the objectives & deliverables of the technical assessment. 
@@ -9,8 +10,9 @@ Building an alternative framework (Option B) would not leave sufficient time for
 
 ## System Evaluated
 **AgriAdvisor India API v1.0** — A rule-based agriculture advisory endpoint for Indian smallholder farmers.
-- Local endpoint: `http://localhost:8000/chat`
+- Local endpoint: `https://dried-fox-regulate.ngrok-free.dev`
 - Docker container: `agri-endpoint`
+- Test it using this command: `Invoke-RestMethod -Uri https://dried-fox-regulate.ngrok-free.dev/chat -Method POST -ContentType "application/json" -Body '{"message":"How do I grow rice?"}'`
 
 ## Quick Start
 
@@ -35,7 +37,7 @@ python -m uvicorn main:app --host 0.0.0.0 --port 8000
 
 Test:
 ```
-Invoke-RestMethod -Uri http://localhost:8000/chat -Method POST -ContentType "application/json" -Body '{"message":"How do I grow rice?"}'
+Invoke-RestMethod -Uri https://dried-fox-regulate.ngrok-free.dev/chat -Method POST -ContentType "application/json" -Body '{"message":"How do I grow rice?"}'
 ```
 
 ### 3. Run Evaluation
